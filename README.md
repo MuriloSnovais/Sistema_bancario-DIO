@@ -1,27 +1,36 @@
-# Sistema Bancário Simples
+# Banco Digital Simples - Versão 2.0
 
-Este é um programa de sistema bancário simples em Python. Ele permite que o usuário faça depósitos, saques, visualize o extrato da conta e saia do sistema.
+Este é um projeto simples de um banco digital desenvolvido em Python. Ele permite que os usuários realizem operações bancárias básicas como depósitos, saques e consultas de extrato, além de criar novas contas de usuário e contas correntes.
 
-## Funcionalidades
+## Funcionalidades Principais
 
-- **Depósito:** Permite que o usuário deposite um valor em sua conta.
-- **Saque:** Permite que o usuário saque um valor de sua conta, respeitando um limite diário de saques.
-- **Extrato:** Exibe todas as transações (depósitos e saques) realizadas, além do saldo atual da conta.
-- **Sair:** Encerra o programa.
+- **Depositar:** Permite ao usuário depositar valores na conta.
+- **Sacar:** O usuário pode realizar saques de até R$500,00, com limite de 3 saques diários.
+- **Extrato:** Exibe todas as transações feitas na conta, como depósitos e saques.
+- **Criar Usuário:** Cadastra um novo usuário no sistema, validando se o CPF já existe.
+- **Criar Conta Corrente:** Cria uma nova conta corrente vinculada a um usuário existente. O número da conta é gerado automaticamente e a agência é sempre "0001".
 
-## Como Funciona
+## Novidades na Versão 2.0
 
-### Menu Principal
-
+- Adicionada a funcionalidade de **criação de conta corrente**, onde:
+  - O número da agência é fixo (0001).
+  - O número da conta é sequencial.
+  - Um usuário pode ter mais de uma conta corrente.
+- Melhorias na verificação de **CPF já existente** ao criar um usuário.
+  
 O programa exibe um menu principal com as seguintes opções:
 
 ```text
-|=========//=======|
-|    [D] Depositar |
-|    [S] Sacar     |
-|    [E] Extrato   |
-|    [Q] Sair      |
-|========//========|
+"""
+|=========////=========|
+|    [D] Depositar     |
+|    [S] Sacar         |
+|    [E] Extrato       |
+|    [C] Criar User    |
+|    [NC]Conta Corrente|  
+|    [Q] Sair          | 
+|=========////=========|
+"""
 ```
 ## Opções do Menu
 
@@ -44,6 +53,24 @@ O programa exibe um menu principal com as seguintes opções:
 
 - Exibe todas as transações realizadas (depósitos e saques) e o saldo atual da conta.
 - Se não houver transações, uma mensagem informativa é exibida.
+  
+### Criar Usuário (`C`)
+
+- O sistema solicita que o usuário informe seu CPF, nome, data de nascimento e endereço.
+- O CPF é validado para garantir que não foi cadastrado anteriormente.
+- Caso o CPF já esteja registrado, uma mensagem de erro será exibida, e o cadastro será interrompido.
+- Um usuário só é criado se o CPF for único.
+
+### Criar Conta Corrente (`NC`)
+
+- O sistema cria uma nova conta corrente vinculada a um usuário existente.
+- Cada conta corrente é composta por:
+  - Agência (fixo: "0001")
+  - Número da conta (sequencial, iniciando em 1)
+  - CPF do usuário
+- Um usuário pode ter mais de uma conta corrente.
+- O sistema armazena as contas em uma lista.
+
 
 ### Sair (`Q`)
 
